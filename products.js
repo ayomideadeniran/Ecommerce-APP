@@ -1,255 +1,165 @@
 const products = [
   {
     id: 1,
-    name: "Wireless Headphones",
-    price: 99,
+    name: "Solar Panel Kit",
+    price: 499,
     discount: 10, // 10% discount
-    stock: 50, // 50 items left in stock
-    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
-    description: "High-quality wireless headphones with noise cancellation and deep bass.",
+    stock: 100, // 100 kits left in stock
+    image: "https://i.ebayimg.com/images/g/GRcAAOSwAvlijHFE/s-l960.jpg",
+    description: "High-efficiency solar panel kit for home and commercial use.",
     specifications: {
-      batteryLife: "30 hours",
-      connectivity: "Bluetooth 5.0",
-      weight: "250g",
-      charging: "USB-C Fast Charging",
-      features: ["Noise Cancellation", "Touch Controls", "Voice Assistant"],
+      powerOutput: "300W",
+      efficiency: "20%",
+      warranty: "25 years",
+      features: ["Weatherproof", "Easy Installation", "High Efficiency"],
     },
     date: "2024-01-15",
   },
   {
     id: 2,
-    name: "Smartwatch",
-    price: 149,
-    discount: 15, // 15% discount
-    stock: 30, // 30 items left in stock
-    image: "https://images.unsplash.com/photo-1558126319-c9feecbf57ee",
-    description: "A sleek and stylish smartwatch with health tracking and customizable watch faces.",
+    name: "Lithium-Ion Battery",
+    price: 299,
+    discount: 5, // 5% discount
+    stock: 75, // 75 units left in stock
+    image: "https://d3f7dpm96o8eu9.cloudfront.net/media/wysiwyg/Blog/59936115_2372813869407905_6412893490170036224_o.jpg",
+    description: "Long-lasting lithium-ion battery for solar storage.",
     specifications: {
-      display: "1.4-inch AMOLED",
-      batteryLife: "7 days",
-      connectivity: "Bluetooth 5.1, GPS",
-      waterResistance: "5 ATM",
-      features: ["Heart Rate Monitoring", "Sleep Tracking", "Message Notifications"],
+      capacity: "5kWh",
+      cycles: "5000+",
+      weight: "25kg",
+      features: ["Smart Monitoring", "Compact Design", "Deep Discharge"],
     },
     date: "2023-12-10",
   },
   {
     id: 3,
-    name: "Laptop",
-    price: 899,
-    discount: 5, // 5% discount
-    stock: 10, // 10 items left in stock
-    image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
-    description: "A powerful laptop with a high-resolution display and long battery life.",
+    name: "Pure Sine Wave Inverter",
+    price: 399,
+    discount: 15, // 15% discount
+    stock: 50, // 50 units left in stock
+    image: "https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/42/4072104/1.jpg?9929",
+    description: "High-quality pure sine wave inverter for seamless power conversion.",
     specifications: {
-      processor: "Intel Core i7",
-      ram: "16GB DDR4",
-      storage: "512GB SSD",
-      display: "15.6-inch 1080p",
-      batteryLife: "10 hours",
-      features: ["Backlit Keyboard", "Fingerprint Sensor", "Thunderbolt 4"],
+      powerRating: "3000W",
+      efficiency: "95%",
+      cooling: "Fan-based",
+      features: ["Quiet Operation", "Overload Protection", "Surge Protection"],
     },
     date: "2024-02-01",
   },
   {
     id: 4,
-    name: "Wireless Earbuds",
-    price: 79,
-    discount: 20, // 20% discount
-    stock: 75, // 75 items left in stock
-    image: "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb",
-    description: "Compact wireless earbuds with immersive sound and long battery life.",
+    name: "Portable Solar Generator",
+    price: 699,
+    discount: 0, // No discount
+    stock: 30, // 30 units left in stock
+    image: "https://www-konga-com-res.cloudinary.com/w_400,f_auto,fl_lossy,dpr_auto,q_auto/media/catalog/product/Q/H/75657_1525936663.jpg",
+    description: "Compact solar generator for camping and outdoor adventures.",
     specifications: {
-      batteryLife: "24 hours",
-      connectivity: "Bluetooth 5.2",
-      charging: "Wireless & USB-C",
-      features: ["Waterproof", "Touch Controls", "Noise Reduction"],
+      capacity: "1000Wh",
+      inputPower: "150W",
+      outputPower: "800W",
+      features: ["USB Ports", "AC Outlets", "LED Lighting"],
     },
     date: "2024-01-22",
   },
   {
     id: 5,
-    name: "Gaming Mouse",
-    price: 59,
-    discount: 0, // No discount
-    stock: 100, // 100 items left in stock
-    image: "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7",
-    description: "High-precision gaming mouse with customizable RGB lighting.",
+    name: "Solar Water Heater",
+    price: 799,
+    discount: 20, // 20% discount
+    stock: 25, // 25 units left in stock
+    image: "https://powersolutionmall.com/storage/2022/06/100-Lter-Solar-water-heater.jpg",
+    description: "Energy-efficient solar water heater for residential use.",
     specifications: {
-      dpi: "16,000",
-      connectivity: "Wired / Wireless",
-      weight: "85g",
-      features: ["Adjustable Sensitivity", "Programmable Buttons", "RGB Lighting"],
+      capacity: "200L",
+      material: "Stainless Steel",
+      insulation: "Polyurethane Foam",
+      features: ["Anti-freeze", "Durable", "Low Maintenance"],
     },
     date: "2024-02-05",
   },
   {
     id: 6,
-    name: "Mechanical Keyboard",
-    price: 129,
+    name: "Solar Street Light",
+    price: 449,
     discount: 10, // 10% discount
-    stock: 40, // 40 items left in stock
-    image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3",
-    description: "Tactile mechanical keyboard with customizable key switches.",
+    stock: 60, // 60 units left in stock
+    image: "https://i.ebayimg.com/images/g/DJEAAOSwEUtnGRoM/s-l960.jpg",
+    description: "Solar-powered street light with motion detection.",
     specifications: {
-      switchType: "Cherry MX Red",
-      connectivity: "Wired / Wireless",
-      backlight: "RGB",
-      features: ["Hot-Swappable Keys", "Custom Macros", "Aluminum Body"],
+      brightness: "5000 Lumens",
+      batteryLife: "12 hours",
+      connectivity: "Motion Sensor",
+      features: ["Auto On/Off", "Remote Control", "Waterproof"],
     },
     date: "2024-01-30",
   },
   {
     id: 7,
-    name: "Portable Bluetooth Speaker",
-    price: 89,
+    name: "Home Energy Storage System",
+    price: 1299,
     discount: 5, // 5% discount
-    stock: 60, // 60 items left in stock
-    image: "https://images.unsplash.com/photo-1569003339405-ea396a5a8a90",
-    description: "Waterproof portable Bluetooth speaker with deep bass.",
+    stock: 15, // 15 units left in stock
+    image: "https://www.lithium-battery-factory.com/wp-content/uploads/2023/05/home-energy-storage-system.jpg",
+    description: "Advanced energy storage system for homes.",
     specifications: {
-      batteryLife: "20 hours",
-      connectivity: "Bluetooth 5.0",
-      waterResistance: "IPX7",
-      features: ["360° Sound", "Party Mode", "USB-C Charging"],
+      capacity: "10kWh",
+      chargeTime: "4 hours",
+      compatibility: "Solar Panels",
+      features: ["Smart App Control", "Backup Power", "Expandable"],
     },
     date: "2024-02-03",
   },
   {
     id: 8,
-    name: "4K Action Camera",
-    price: 199,
+    name: "Solar-Powered Fan",
+    price: 149,
     discount: 0, // No discount
-    stock: 20, // 20 items left in stock
-    image: "https://images.unsplash.com/photo-1607462109225-ea396b5faa5e",
-    description: "Compact 4K action camera with image stabilization.",
+    stock: 100, // 100 units left in stock
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjjfFp-Hlw9_EzHiBPTsjVaDwgQimgEhDNWg&s",
+    description: "Eco-friendly solar-powered fan for indoor and outdoor use.",
     specifications: {
-      resolution: "4K 60FPS",
-      connectivity: "WiFi & Bluetooth",
-      waterResistance: "30m",
-      features: ["Slow Motion", "Voice Control", "Touchscreen"],
+      size: "12-inch",
+      powerSource: "Solar Panel",
+      features: ["Adjustable Speed", "Noiseless Operation", "Rechargeable Battery"],
     },
     date: "2024-01-29",
   },
-  {
+  { 
     id: 9,
-    name: "Smart Light Bulb",
-    price: 25,
+    name: "Solar Phone Charger",
+    price: 59,
     discount: 15, // 15% discount
-    stock: 150, // 150 items left in stock
-    image: "https://images.unsplash.com/photo-1611892440504-42a792e24d32",
-    description: "WiFi-enabled smart light bulb with adjustable brightness and colors.",
+    
+    stock: 200, // 200 units left in stock
+    image: "https://images-cdn.ubuy.co.in/65cc3cb75b8e111e043a698a-bigblue-10w-etfe-solar-panel-charger.jpg",
+    description: "Compact solar phone charger for on-the-go charging.",
     specifications: {
-      wattage: "10W",
-      connectivity: "WiFi, Bluetooth",
-      features: ["Voice Control", "Dimmable", "App Control"],
+      capacity: "5000mAh",
+      inputPower: "2W",
+      features: ["USB Output", "Lightweight", "Waterproof"],
     },
     date: "2024-01-17",
   },
   {
     id: 10,
-    name: "Robot Vacuum Cleaner",
-    price: 299,
+    name: "Hybrid Inverter",
+    price: 899,
     discount: 10, // 10% discount
-    stock: 25, // 25 items left in stock
-    image: "https://images.unsplash.com/photo-1603468620905-8de7d86b781e",
-    description: "Smart robot vacuum with mapping and automatic dirt disposal.",
+    stock: 40, // 40 units left in stock
+    image: "https://cdn.prod.website-files.com/62d9fdb180261014e2020876/62da526c754c765220afc272_SOLAR_NXG%2B1500VA2.png",
+    description: "Hybrid inverter for solar and grid integration.",
     specifications: {
-      batteryLife: "120 min",
-      connectivity: "WiFi, App Control",
-      features: ["Self-Charging", "Carpet Detection", "Schedule Cleaning"],
+      powerRating: "5000W",
+      efficiency: "96%",
+      modes: ["Solar Mode", "Grid Mode", "Battery Mode"],
+      features: ["MPPT Technology", "Real-time Monitoring", "Grid Support"],
     },
     date: "2024-01-12",
-  },
-  {
-    id: 11,
-    name: "Smart Doorbell",
-    price: 149,
-    discount: 0, // No discount
-    stock: 45, // 45 items left in stock
-    image: "https://images.unsplash.com/photo-1620325867502-221cfb5faa5e",
-    description: "Wireless video doorbell with motion detection and two-way audio.",
-    specifications: {
-      resolution: "1080p HD",
-      connectivity: "WiFi, Cloud Storage",
-      features: ["Night Vision", "Live Streaming", "Motion Alerts"],
-    },
-    date: "2024-01-09",
-  },
-  {
-    id: 12,
-    name: "VR Headset",
-    price: 399,
-    discount: 25, // 25% discount
-    stock: 15, // 15 items left in stock
-    image: "https://images.unsplash.com/photo-1622737133809-dfeddd827859",
-    description: "Virtual reality headset with immersive 3D experiences.",
-    specifications: {
-      display: "OLED 120Hz",
-      connectivity: "Wireless & PC VR",
-      features: ["6DOF Tracking", "Hand Controllers", "Built-in Audio"],
-    },
-    date: "2024-01-25",
-  },
-  {
-    id: 13,
-    name: "Smart Coffee Maker",
-    price: 99,
-    discount: 5, // 5% discount
-    stock: 80, // 80 items left in stock
-    image: "https://images.unsplash.com/photo-1588702547919-26089e690ecc",
-    description: "WiFi-enabled coffee maker with customizable brew settings.",
-    specifications: {
-      capacity: "12 cups",
-      connectivity: "WiFi, App Control",
-      features: ["Programmable Timer", "Voice Control", "Auto Shutoff"],
-    },
-    date: "2024-02-07",
-  },
-  {
-    id: 14,
-    name: "Electric Toothbrush",
-    price: 59,
-    discount: 10, // 10% discount
-    stock: 120, // 120 items left in stock
-    image: "https://images.unsplash.com/photo-1621607517184-9c1ff0a84a1a",
-    description: "Rechargeable smart toothbrush with multiple cleaning modes.",
-    specifications: {
-      batteryLife: "14 days",
-      connectivity: "Bluetooth App",
-      features: ["Pressure Sensor", "Timer", "Replaceable Heads"],
-    },
-    date: "2024-01-20",
-  },
-  {
-    id: 15,
-    name: "Smart Thermostat",
-    price: 179,
-    discount: 0, // No discount
-    stock: 35, // 35 items left in stock
-    image: "https://images.unsplash.com/photo-1620325867502-221cfb5faa5e",
-    description: "AI-powered smart thermostat with energy-saving features.",
-    specifications: {
-      connectivity: "WiFi, Smart Assistant",
-      features: ["Auto Schedule", "Voice Control", "Remote Access"],
-    },
-    date: "2024-01-18",
-  },
-  {
-    id: 16,
-    name: "Wireless Charging Pad",
-    price: 39,
-    discount: 0, // No discount
-    stock: 200, // 200 items left in stock
-    image: "https://images.unsplash.com/photo-1604594849809-dfeddd827859",
-    description: "Fast wireless charging pad for smartphones and accessories.",
-    specifications: {
-      chargingSpeed: "15W",
-      compatibility: "Qi-enabled devices",
-      features: ["Overheat Protection", "Slim Design", "LED Indicator"],
-    },
-    date: "2024-02-08",
   },
 ];
 
 export default products;
+
+
