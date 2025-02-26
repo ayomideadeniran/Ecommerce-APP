@@ -32,6 +32,7 @@ export default function OrderManagement() {
             <div key={order.id} style={{ border: "1px solid #ddd", padding: "10px", margin: "10px 0" }}>
               <p>Order ID: {order.id}</p>
               <p>Customer: {order.customer}</p>
+              <p>Phone Number: 08118938941</p>
               <p>Status: <strong>{order.status}</strong></p>
               <button onClick={() => updateOrderStatus(order.id, "Processing")}>Processing</button>
               <button onClick={() => updateOrderStatus(order.id, "Shipped")}>Shipped</button>
