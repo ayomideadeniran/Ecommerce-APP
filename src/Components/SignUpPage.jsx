@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function SignUpPage({ setAuthUser }) {
   const navigate = useNavigate();
@@ -36,31 +36,43 @@ function SignUpPage({ setAuthUser }) {
 
   return (
     <div style={styles.container}>
-      <h2>Sign Up</h2>
-      {error && <p style={styles.error}>{error}</p>}
-      {success && <p style={styles.success}>{success}</p>}
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        style={styles.input}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        style={styles.input}
-      />
-      <button onClick={handleSignUp} style={styles.button}>
-        Sign Up
-      </button>
-      <p>
+      <h2 style={styles.title}>Sign Up</h2>
+      <form onSubmit={(e) => e.preventDefault()} style={styles.form}>
+        {error && <p style={styles.error}>{error}</p>}
+        {success && <p style={styles.success}>{success}</p>}
+        <label htmlFor="email" style={styles.label}>
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          style={styles.input}
+          required
+        />
+        <label htmlFor="password" style={styles.label}>
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter your password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          style={styles.input}
+          required
+        />
+        <button onClick={handleSignUp} style={styles.button}>
+          Sign Up
+        </button>
+      </form>
+      <p style={styles.loginPrompt}>
         Already have an account?{" "}
-        <a href="/login" style={styles.link}>
+        <Link to="/login" style={styles.link}>
           Log In
-        </a>
+        </Link>
       </p>
     </div>
   );
@@ -71,26 +83,52 @@ const styles = {
     padding: "24px",
     maxWidth: "400px",
     margin: "0 auto",
-    backgroundColor: "#ffffff",
-    borderRadius: "8px",
-    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+    backgroundColor: "#f8f9fa",
+    borderRadius: "12px",
+    fontFamily: "'Poppins', sans-serif",
+    boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+  },
+  title: {
+    fontSize: "28px",
+    fontWeight: "bold",
+    color: "#333",
+    marginBottom: "24px",
     textAlign: "center",
+  },
+  form: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "16px",
+  },
+  label: {
+    fontSize: "14px",
+    fontWeight: "600",
+    color: "#555",
   },
   input: {
     padding: "12px",
-    width: "100%",
-    marginBottom: "16px",
+    fontSize: "16px",
     border: "1px solid #ddd",
     borderRadius: "8px",
+    outline: "none",
+    transition: "border-color 0.3s ease",
+    "&:focus": {
+      borderColor: "#22c55e",
+    },
   },
   button: {
-    padding: "12px 24px",
     backgroundColor: "#22c55e",
     color: "#fff",
+    padding: "12px 24px",
+    fontSize: "16px",
+    fontWeight: "600",
     border: "none",
     borderRadius: "8px",
     cursor: "pointer",
-    fontSize: "16px",
+    transition: "background-color 0.3s ease",
+    "&:hover": {
+      backgroundColor: "#16a34a",
+    },
   },
   error: {
     color: "#ef4444",
@@ -104,6 +142,11 @@ const styles = {
     textDecoration: "none",
     color: "#22c55e",
     fontWeight: "bold",
+  },
+  loginPrompt: {
+    marginTop: "16px",
+    fontSize: "14px",
+    color: "#555",
   },
 };
 

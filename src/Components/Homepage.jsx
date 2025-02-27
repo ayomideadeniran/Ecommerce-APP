@@ -31,27 +31,33 @@ function HomePage({ addToCart, cart }) {
 
   return (
     <div style={styles.container}>
-      {/* Header Section */}
-      <header style={styles.header}>
-        <h1 style={styles.title}>Welcome to Our Store</h1>
-        <p style={styles.subtitle}>Discover high-quality products at unbeatable prices!</p>
+      {/* Header Section with Background Image */}
+      <section style={styles.headerWithBackground}>
+        {/* Overlay for readability */}
+        <div style={styles.overlay}></div>
 
-        {/* Cart Notification Icon */}
-        <div style={styles.cartNotificationContainer}>
-          <Link to="/cart" style={styles.cartLink}>
-            <span style={styles.cartIcon}>🛒</span>
-            {totalItemsInCart > 0 && (
-              <span style={styles.cartItemCount}>{totalItemsInCart}</span>
-            )}
-          </Link>
+        {/* Content */}
+        <div style={styles.headerContent}>
+          <h1 style={styles.title}>Welcome to Our Store</h1>
+          <p style={styles.subtitle}>Discover high-quality products at unbeatable prices!</p>
+
         </div>
-      </header>
+          {/* Cart Notification Icon */}
+          <div style={styles.cartNotificationContainer}>
+            <Link to="/cart" style={styles.cartLink}>
+              <span style={styles.cartIcon}>🛒</span>
+              {totalItemsInCart > 0 && (
+                <span style={styles.cartItemCount}>{totalItemsInCart}</span>
+              )}
+            </Link>
+          </div>
+      </section>
 
       {/* Search Bar */}
       <div style={styles.searchBarContainer}>
         <input
           type="text"
-          placeholder="Search for products..."
+          placeholder="Search products..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           style={styles.searchInput}
@@ -64,16 +70,12 @@ function HomePage({ addToCart, cart }) {
       {/* Featured Products Section */}
       <section style={styles.featuredSection}>
         <h2 style={styles.sectionTitle}>Featured Products</h2>
-        <div style={styles.productGrid}>
-          {filteredProducts.length > 0 ? (
-            filteredProducts.map((product) => (
+        {filteredProducts.length > 0 ? (
+          <div style={styles.productGrid}>
+            {filteredProducts.map((product) => (
               <div key={product.id} style={styles.productCard}>
                 {/* Product Image */}
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  style={styles.productImage}
-                />
+                <img src={product.image} alt={product.name} style={styles.productImage} />
 
                 {/* Product Name */}
                 <h3 style={styles.productName}>{product.name}</h3>
@@ -84,28 +86,35 @@ function HomePage({ addToCart, cart }) {
                 )}
 
                 {/* Product Price */}
-                <p style={styles.productPrice}>
+                <div style={styles.productPrice}>
                   ${product.discount > 0
                     ? (product.price * ((100 - product.discount) / 100)).toFixed(2)
                     : product.price.toFixed(2)}
 
                   {/* Original Price (Strikethrough) */}
                   {product.discount > 0 && (
-                    <span style={styles.originalPrice}>
-                      {" "}
-                      ${product.price.toFixed(2)}
-                    </span>
+                    <span style={styles.originalPrice}> ${product.price.toFixed(2)}</span>
                   )}
-                </p>
+                </div>
+
+                {/* Installments */}
+                <div>
+                  {product.installments.map((installment, index)=>(
+                      <p key={index}>
+                         {installment.months} Months: ${installment.monthlyPayment.toFixed(2)}
+                      </p>
+                  ))}
+                </div>
 
                 {/* Stock Status */}
-                <p style={styles.stockStatus}>
-                  {product.stock > 0
-                    ? product.stock > 10
-                      ? "In Stock"
-                      : "Low Stock"
-                    : "Out of Stock"}
-                </p>
+                <div
+                  style={{
+                    ...styles.stockStatus,
+                    color: product.stock > 0 ? "#16a34a" : "#dc2626",
+                  }}
+                >
+                  {product.stock > 0 ? (product.stock > 10 ? "In Stock" : "Low Stock") : "Out of Stock"}
+                </div>
 
                 {/* Buttons */}
                 <div style={styles.buttonContainer}>
@@ -113,11 +122,10 @@ function HomePage({ addToCart, cart }) {
                     onClick={() => handleAddToCart(product)}
                     style={{
                       ...styles.addToCartButton,
-                      ...(addedProducts.has(product.id) ||
-                        product.stock === 0 && {
-                          opacity: 0.5,
-                          pointerEvents: "none",
-                        }),
+                      ...(addedProducts.has(product.id) || product.stock === 0 && {
+                        opacity: 0.5,
+                        pointerEvents: "none",
+                      }),
                     }}
                     disabled={addedProducts.has(product.id) || product.stock === 0}
                   >
@@ -135,21 +143,17 @@ function HomePage({ addToCart, cart }) {
                   </button>
                 </div>
               </div>
-            ))
-          ) : (
-            <p style={styles.noResultsMessage}>
-              No results found for "{searchTerm}".
-            </p>
-          )}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <p style={styles.noResultsMessage}>No results found for "{searchTerm}".</p>
+        )}
       </section>
 
       {/* Call-to-Action Section */}
       <section style={styles.ctaSection}>
         <h2 style={styles.ctaTitle}>Shop Now and Save Big!</h2>
-        <p style={styles.ctaSubtitle}>
-          Limited-time offers available. Don't miss out!
-        </p>
+        <p style={styles.ctaSubtitle}>Limited-time offers available. Don't miss out!</p>
         <button onClick={() => navigate("/shop")} style={styles.ctaButton}>
           Browse All Products
         </button>
@@ -157,10 +161,7 @@ function HomePage({ addToCart, cart }) {
 
       {/* Footer Section */}
       <footer style={styles.footer}>
-        <p>
-          &copy; {new Date().getFullYear()} Your Ecommerce Store. All rights
-          reserved.
-        </p>
+        © {new Date().getFullYear()} Your Ecommerce Store. All rights reserved.
       </footer>
     </div>
   );
@@ -169,41 +170,71 @@ function HomePage({ addToCart, cart }) {
 // Styles for the components
 const styles = {
   container: {
-    padding: "24px",
-    maxWidth: "1200px",
+    padding: "1px",
+    // maxWidth: "1200px",
     margin: "0 auto",
     textAlign: "center",
     backgroundColor: "#f8f9fa",
     fontFamily: "'Poppins', sans-serif",
   },
-  header: {
-    marginBottom: "32px",
-    padding: "24px",
-    backgroundColor: "#ffffff",
-    borderRadius: "8px",
-    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-    position: "relative", // For cart notification positioning
+  headerWithBackground: {
+    position: "relative",
+    height: "50vh", // Adjust height as needed
+    backgroundImage: 'url("https://png.pngtree.com/thumb_back/fh260/background/20230718/pngtree-digital-retailing-illustration-laptop-keyboard-with-shopping-basket-and-e-commerce-image_3903657.jpg")', // Replace with your image URL
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    color: "#fff",
+    // borderRadius: "1rem",
+  },
+  overlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "rgba(0, 0, 0, 0.6)", // Dark overlay for readability
+  },
+  headerContent: {
+    position: "relative",
+    zIndex: 1,
+    textAlign: "center",
   },
   title: {
+    backgroundColor: "black",
+    color: "#fff",
+    borderRadius: "8px",
+    padding: "8px",
     fontSize: "32px",
     fontWeight: "bold",
-    color: "#333",
     marginBottom: "8px",
   },
   subtitle: {
     fontSize: "18px",
-    color: "#6b7280",
+    color: "#fff",
+    borderRadius: "8px",
+    padding: "8px",
+    fontWeight: "bold",
+    marginBottom: "24px",
   },
   cartNotificationContainer: {
     position: "absolute",
+    backgroundColor: "#fff",
+    color: "#fff",
+    borderRadius: "50%",
+    padding: "8px",
     top: "16px",
     right: "16px",
+    zIndex: 2,
   },
   cartLink: {
     textDecoration: "none",
     display: "flex",
     alignItems: "center",
-    color: "#333",
+    color: "#fff",
   },
   cartIcon: {
     fontSize: "24px",
@@ -222,6 +253,7 @@ const styles = {
     lineHeight: "1",
   },
   searchBarContainer: {
+    paddingTop: "65px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -277,7 +309,7 @@ const styles = {
     "&:hover": {
       transform: "scale(1.05)",
     },
-    position: "relative", // For discount tag positioning
+    position: "relative",
   },
   productImage: {
     width: "100%",
@@ -315,7 +347,6 @@ const styles = {
   },
   stockStatus: {
     fontSize: "14px",
-    color: (product) => (product.stock > 0 ? "#16a34a" : "#dc2626"),
     marginBottom: "8px",
   },
   buttonContainer: {
@@ -392,6 +423,3 @@ const styles = {
 };
 
 export default HomePage;
-
-
-

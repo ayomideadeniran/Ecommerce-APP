@@ -6,15 +6,25 @@ export default function CheckoutPage() {
   const navigate = useNavigate();
   const cart = location.state?.cart || [];
 
+  // Payment Details
   const [cardNumber, setCardNumber] = useState('6116425849529927');
   const [expiryDate, setExpiryDate] = useState('12/26');
   const [cvv, setCvv] = useState('357');
+
+  // Personal Details
   const [name, setName] = useState('Ayomide Adeniran');
-  const [phone, setPhone] = useState('');
-  const [deliveryLocation, setDeliveryLocation] = useState('');
-  const [instructions, setInstructions] = useState('');
+  const [phone, setPhone] = useState('08561478239');
+  const [deliveryLocation, setDeliveryLocation] = useState('123 Main Street, Lagos');
+  const [instructions, setInstructions] = useState('Leave at the doorstep');
+
+  // Identification Details
+  const [nin, setNin] = useState('67834591201');
+  const [passportNumber, setPassportNumber] = useState('P15623478');
+
+  // State for errors and loading
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showPolicy, setShowPolicy] = useState(false);
 
   // Calculate total amount
   const totalAmount = cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
@@ -24,7 +34,7 @@ export default function CheckoutPage() {
     e.preventDefault();
 
     // Validation
-    if (!cardNumber || !expiryDate || !cvv || !name || !phone || !deliveryLocation) {
+    if (!cardNumber || !expiryDate || !cvv || !name || !phone || !deliveryLocation || !nin || !passportNumber) {
       setError('Please fill in all required fields.');
       return;
     }
@@ -46,6 +56,10 @@ export default function CheckoutPage() {
 
     if (!/^[0-9]{11}$/.test(phone)) {
       setError('Invalid phone number. Must be 11 digits.');
+      return;
+    }
+    if (nin.length !== 11 || isNaN(Number(nin))) {
+      setError('Invalid NIN. Must be 11 digits.');
       return;
     }
 
@@ -74,17 +88,22 @@ export default function CheckoutPage() {
     }, 3000);
   };
 
+    // Toggle Policy Visibility
+    const togglePolicy = () => {
+      setShowPolicy(!showPolicy);
+    };
+
   return (
     <div style={styles.container}>
       <h2 style={styles.title}>Checkout</h2>
-      <p style={styles.totalAmount}>Total Amount: <strong>${totalAmount}</strong></p>
+      <p style={styles.totalAmount}>Total Amount: <strong style={{color:"#22c55e"}}>${totalAmount}</strong></p>
 
       <form onSubmit={handlePayment} style={styles.form}>
         {/* Card Number */}
         <label style={styles.label}>Card Number</label>
         <input
           type="text"
-          placeholder="Enter card number"
+          placeholder="Enter 16-digit card number"
           maxLength="16"
           value={cardNumber}
           onChange={(e) => setCardNumber(e.target.value)}
@@ -96,7 +115,7 @@ export default function CheckoutPage() {
         <label style={styles.label}>Expiry Date (MM/YY)</label>
         <input
           type="text"
-          placeholder="MM/YY"
+          placeholder="Enter expiry date (MM/YY)"
           maxLength="5"
           value={expiryDate}
           onChange={(e) => setExpiryDate(e.target.value)}
@@ -108,7 +127,7 @@ export default function CheckoutPage() {
         <label style={styles.label}>CVV</label>
         <input
           type="password"
-          placeholder="Enter CVV"
+          placeholder="Enter 3-digit CVV"
           maxLength="3"
           value={cvv}
           onChange={(e) => setCvv(e.target.value)}
@@ -131,7 +150,7 @@ export default function CheckoutPage() {
         <label style={styles.label}>Phone Number</label>
         <input
           type="text"
-          placeholder="Enter phone number"
+          placeholder="Enter 11-digit phone number"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           required
@@ -158,6 +177,49 @@ export default function CheckoutPage() {
           style={styles.textarea}
         />
 
+        {/* NIN */}
+        <label style={styles.label}>NIN (National Identification Number)</label>
+        <input
+          type="text"
+          placeholder="Enter 11-digit NIN"
+          value={nin}
+          onChange={(e) => setNin(e.target.value)}
+          required
+          style={styles.input}
+          maxLength="11"
+        />
+
+        {/* Passport Number */}
+        <label style={styles.label}>Passport Number</label>
+        <input
+          type="text"
+          placeholder="Enter passport number"
+          value={passportNumber}
+          onChange={(e) => setPassportNumber(e.target.value)}
+          required
+          style={styles.input}
+        />
+        <div style={styles.policySection}>
+          <button type="button" onClick={togglePolicy} style={styles.policyButton}>
+              {showPolicy ? 'Hide Installment Policy' : 'View Installment Policy'}
+          </button>
+          {showPolicy && (
+            <div style={styles.policyContent}>
+              <h3>Installment Purchase Agreement</h3>
+              <p>
+                By choosing to purchase through installments, you agree to the following terms:
+              </p>
+              <ul>
+                <li>You will make scheduled payments as agreed upon.</li>
+                <li>Failure to meet payments may result in the suspension of installment plans.</li>
+                <li>The product will remain the property of the company until full payment is received.</li>
+                <li>Returns and exchanges are subject to our standard policy but may have additional terms for installment purchases.</li>
+                <li>Installment plans are subject to credit verification.</li>
+              </ul>
+              <p>Please contact us if you have any questions regarding installment purchases.</p>
+            </div>
+          )}
+        </div>
         {/* Error Message */}
         {error && <p style={styles.error}>{error}</p>}
 
@@ -174,7 +236,7 @@ export default function CheckoutPage() {
 const styles = {
   container: {
     padding: '24px',
-    maxWidth: '400px',
+    maxWidth: '600px', // Increased max-width
     margin: '0 auto',
     backgroundColor: '#ffffff',
     borderRadius: '12px',
@@ -246,5 +308,28 @@ const styles = {
     '&:hover': {
       backgroundColor: '#16a34a',
     },
+  },
+  policySection: {
+    marginTop: '20px',
+    marginBottom: '20px',
+  },
+  policyButton: {
+    backgroundColor: '#3b82f6',
+    color: '#fff',
+    padding: '10px 15px',
+    borderRadius: '8px',
+    border: 'none',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s ease',
+    marginBottom:"10px",
+    '&:hover': {
+      backgroundColor: '#2563eb',
+    },
+  },
+  policyContent: {
+    border: '1px solid #ddd',
+    padding: '15px',
+    borderRadius: '8px',
+    backgroundColor:"#f3f4f6"
   },
 };

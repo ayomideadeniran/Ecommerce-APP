@@ -14,6 +14,11 @@ const products = [
       features: ["Weatherproof", "Easy Installation", "High Efficiency"],
     },
     date: "2024-01-15",
+    installments: [
+      { months: 3, monthlyPayment: (499 * 0.9) / 3 }, // 3-month plan (after discount)
+      { months: 6, monthlyPayment: (499 * 0.9) / 6 }, // 6-month plan (after discount)
+      { months: 12, monthlyPayment: (499 * 0.9) / 12}, //12-month plan
+    ],
   },
   {
     id: 2,
@@ -30,6 +35,11 @@ const products = [
       features: ["Smart Monitoring", "Compact Design", "Deep Discharge"],
     },
     date: "2023-12-10",
+    installments: [
+      { months: 3, monthlyPayment: (299 * 0.95) / 3 },
+      { months: 6, monthlyPayment: (299 * 0.95) / 6 },
+      { months: 12, monthlyPayment: (299 * 0.95) / 12 },
+    ],
   },
   {
     id: 3,
@@ -46,6 +56,11 @@ const products = [
       features: ["Quiet Operation", "Overload Protection", "Surge Protection"],
     },
     date: "2024-02-01",
+    installments: [
+      { months: 3, monthlyPayment: (399 * 0.85) / 3 },
+      { months: 6, monthlyPayment: (399 * 0.85) / 6 },
+      { months: 12, monthlyPayment: (399 * 0.85) / 12},
+    ],
   },
   {
     id: 4,
@@ -62,6 +77,11 @@ const products = [
       features: ["USB Ports", "AC Outlets", "LED Lighting"],
     },
     date: "2024-01-22",
+    installments: [
+      { months: 3, monthlyPayment: 699 / 3 },
+      { months: 6, monthlyPayment: 699 / 6 },
+      { months: 12, monthlyPayment: 699/12},
+    ],
   },
   {
     id: 5,
@@ -78,6 +98,11 @@ const products = [
       features: ["Anti-freeze", "Durable", "Low Maintenance"],
     },
     date: "2024-02-05",
+    installments: [
+      { months: 3, monthlyPayment: (799 * 0.8) / 3 },
+      { months: 6, monthlyPayment: (799 * 0.8) / 6 },
+      { months: 12, monthlyPayment: (799 * 0.8) / 12},
+    ],
   },
   {
     id: 6,
@@ -94,6 +119,11 @@ const products = [
       features: ["Auto On/Off", "Remote Control", "Waterproof"],
     },
     date: "2024-01-30",
+    installments: [
+      { months: 3, monthlyPayment: (449 * 0.9) / 3 },
+      { months: 6, monthlyPayment: (449 * 0.9) / 6 },
+      { months: 12, monthlyPayment: (449 * 0.9) / 12},
+    ],
   },
   {
     id: 7,
@@ -110,6 +140,11 @@ const products = [
       features: ["Smart App Control", "Backup Power", "Expandable"],
     },
     date: "2024-02-03",
+    installments: [
+      { months: 3, monthlyPayment: (1299 * 0.95) / 3 },
+      { months: 6, monthlyPayment: (1299 * 0.95) / 6 },
+      { months: 12, monthlyPayment: (1299 * 0.95) / 12},
+    ],
   },
   {
     id: 8,
@@ -125,13 +160,17 @@ const products = [
       features: ["Adjustable Speed", "Noiseless Operation", "Rechargeable Battery"],
     },
     date: "2024-01-29",
+    installments: [
+      { months: 3, monthlyPayment: 149 / 3 },
+      { months: 6, monthlyPayment: 149 / 6 },
+      { months: 12, monthlyPayment: 149/12},
+    ],
   },
-  { 
+  {
     id: 9,
     name: "Solar Phone Charger",
     price: 59,
     discount: 15, // 15% discount
-    
     stock: 200, // 200 units left in stock
     image: "https://images-cdn.ubuy.co.in/65cc3cb75b8e111e043a698a-bigblue-10w-etfe-solar-panel-charger.jpg",
     description: "Compact solar phone charger for on-the-go charging.",
@@ -141,6 +180,11 @@ const products = [
       features: ["USB Output", "Lightweight", "Waterproof"],
     },
     date: "2024-01-17",
+    installments: [
+      { months: 3, monthlyPayment: (59 * 0.85) / 3 },
+      { months: 6, monthlyPayment: (59 * 0.85) / 6 },
+      { months: 12, monthlyPayment: (59 * 0.85) / 12},
+    ],
   },
   {
     id: 10,
@@ -157,9 +201,12 @@ const products = [
       features: ["MPPT Technology", "Real-time Monitoring", "Grid Support"],
     },
     date: "2024-01-12",
+    installments: [
+      { months: 3, monthlyPayment: (899 * 0.9) / 3 },
+      { months: 6, monthlyPayment: (899 * 0.9) / 6 },
+      { months: 12, monthlyPayment: (899 * 0.9) / 12},
+    ],
   },
 ];
 
 export default products;
-
-

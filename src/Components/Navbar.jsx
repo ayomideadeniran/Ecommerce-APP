@@ -16,7 +16,7 @@ const Navbar = ({ authUser, setAuthUser }) => {
       <div style={styles.container}>
         {/* Logo or Brand Name */}
         <Link to="/" style={styles.brandLink}>
-          Your Ecommerce Store
+          ATECH STORE
         </Link>
 
         {/* Navigation Links (Desktop View) */}
@@ -28,7 +28,7 @@ const Navbar = ({ authUser, setAuthUser }) => {
           </li>
           <li>
             <Link to="/cart" style={styles.link}>
-              Cart 🛒
+              Cart <span style={styles.cartIcon}>🛒</span>
             </Link>
           </li>
           {authUser ? (
@@ -39,31 +39,23 @@ const Navbar = ({ authUser, setAuthUser }) => {
                 </Link>
               </li>
               <li>
-  <a href="https://ecommerce-sms-api.onrender.com" target="_blank" rel="noopener noreferrer" style={styles.link}>
-    Send SMS
-  </a>
-</li>
+                <a href="https://ecommerce-sms-api.onrender.com" target="_blank" rel="noopener noreferrer" style={styles.link}>
+                  Send SMS
+                </a>
+              </li>
               <li>
                 <Link to="/admin-dashboard" style={styles.link}>
                   Admin Dashboard
                 </Link>
               </li>
+                <li>
+                <button onClick={handleLogout} style={styles.logoutButton}>
+                    Logout
+                </button>
+                </li>
             </>
           ) : null}
         </ul>
-
-        {/* Connect Wallet / Disconnect Wallet Button */}
-        {/* <div style={styles.buttonContainer}>
-          {authUser ? (
-            <button onClick={handleLogout} style={styles.logoutButton}>
-              Disconnect Wallet
-            </button>
-          ) : (
-            <button onClick={() => alert("Connect Wallet Logic")} style={styles.connectButton}>
-              Connect Wallet
-            </button>
-          )}
-        </div> */}
 
         {/* Hamburger Menu Toggle (Mobile View) */}
         <div style={styles.hamburgerContainer}>
@@ -94,7 +86,7 @@ const Navbar = ({ authUser, setAuthUser }) => {
             <div style={styles.offcanvasOverlay} onClick={() => setIsMenuOpen(false)}></div>
             <div style={styles.offcanvasMenu}>
               <div style={styles.offcanvasHeader}>
-                <h5 style={styles.offcanvasTitle}>Your Ecommerce Store</h5>
+                <h5 style={styles.offcanvasTitle}>ATECH STORE</h5>
                 <button
                   onClick={() => setIsMenuOpen(false)}
                   style={styles.closeButton}
@@ -123,7 +115,7 @@ const Navbar = ({ authUser, setAuthUser }) => {
                 </li>
                 <li>
                   <Link to="/cart" style={styles.link} onClick={() => setIsMenuOpen(false)}>
-                    Cart 🛒
+                    Cart <span style={styles.cartIcon}>🛒</span>
                   </Link>
                 </li>
                 {authUser ? (
@@ -134,27 +126,23 @@ const Navbar = ({ authUser, setAuthUser }) => {
                       </Link>
                     </li>
                     <li>
-  <a href="https://ecommerce-sms-api.onrender.com" target="_blank" rel="noopener noreferrer" style={styles.link}>
-    Send SMS
-  </a>
-</li>
+                      <a href="https://ecommerce-sms-api.onrender.com" target="_blank" rel="noopener noreferrer" style={styles.link}>
+                        Send SMS
+                      </a>
+                    </li>
                     <li>
                       <Link to="/admin-dashboard" style={styles.link} onClick={() => setIsMenuOpen(false)}>
                         Admin Dashboard
                       </Link>
                     </li>
                     <li>
-                      <button onClick={handleLogout} style={styles.logoutButton}>
-                        {/* Disconnect Wallet */}
-                      </button>
+                        <button onClick={handleLogout} style={styles.logoutButton}>
+                            Logout
+                        </button>
                     </li>
                   </>
                 ) : (
-                  <li>
-                    <button onClick={() => alert("Connect Wallet Logic")} style={styles.connectButton}>
-                      {/* Connect Wallet */}
-                    </button>
-                  </li>
+                  null
                 )}
               </ul>
             </div>
@@ -170,11 +158,16 @@ const styles = {
   navbar: {
     backgroundColor: "#22c55e",
     padding: "10px 20px",
+    marginBottom: "30px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-    borderRadius: "11px",
+    borderRadius: "0px",
+    fontFamily: "'Poppins', sans-serif",
+    position: "sticky",
+    top: "0",
+    zIndex: "100",
   },
   container: {
     maxWidth: "1200px",
@@ -196,6 +189,7 @@ const styles = {
     gap: "20px",
     margin: 0,
     padding: 0,
+    alignItems: "center",
   },
   link: {
     color: "#fff",
@@ -204,13 +198,14 @@ const styles = {
     fontWeight: "500",
     transition: "color 0.3s ease",
     "&:hover": {
-      color: "#22c55e",
+      color: "#f8f9fa",
     },
-  },
-  buttonContainer: {
     display: "flex",
     alignItems: "center",
   },
+    cartIcon:{
+        marginLeft:"4px"
+    },
   connectButton: {
     backgroundColor: "#16a34a",
     color: "#fff",
@@ -266,22 +261,25 @@ const styles = {
     right: "-300px",
     width: "300px",
     height: "100%",
-    backgroundColor: "#333",
+    backgroundColor: "#ffffff",
     zIndex: 1000,
     padding: "20px",
     transition: "right 0.3s ease",
     "@media (max-width: 768px)": {
       right: "0",
     },
+    boxShadow: "-2px 0 5px rgba(0, 0, 0, 0.2)", // Add a subtle shadow
   },
   offcanvasHeader: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: "20px",
+      color:"#22c55e",
+      fontWeight:"bold"
   },
   offcanvasTitle: {
-    color: "#fff",
+    color: "#22c55e",
     fontSize: "20px",
     fontWeight: "bold",
   },
@@ -293,7 +291,7 @@ const styles = {
   closeIcon: {
     width: "24px",
     height: "24px",
-    color: "#fff",
+    color: "#333",
   },
   offcanvasNavList: {
     listStyle: "none",
