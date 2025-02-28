@@ -28,12 +28,12 @@ function ProductDetailsPage({ addToCart, cart }) {
                 <span style={styles.discountTag}>-{product.discount}%</span>
             )}
           <span style={styles.price}>
-            ${product.discount > 0
+          ₦{product.discount > 0
                 ? (product.price * ((100 - product.discount) / 100)).toFixed(2)
                 : product.price.toFixed(2)}
           </span>
             {product.discount > 0 && (
-                <span style={styles.originalPrice}> ${product.price.toFixed(2)}</span>
+                <span style={styles.originalPrice}>  ₦{product.price.toFixed(2)}</span>
             )}
         </div>
       </div>
@@ -64,7 +64,7 @@ function ProductDetailsPage({ addToCart, cart }) {
           {product.installments.map((installment) => (
             <li key={installment.months} style={styles.installmentItem}>
               <span style={styles.installmentMonths}>{installment.months} Months:</span>
-              <span style={styles.installmentAmount}>${installment.monthlyPayment.toFixed(2)}</span>
+              <span style={styles.installmentAmount}> ₦{installment.monthlyPayment.toFixed(2)}</span>
             </li>
           ))}
         </ul>

@@ -49,7 +49,7 @@ function CartPage({ cart, updateQuantity, removeFromCart }) {
               />
               <img src={item.image} alt={item.name} style={styles.itemImage} />
               <span style={styles.itemName}>
-                {item.name} - ${(item.price * item.quantity).toFixed(2)}
+                {item.name} -  ₦{(item.price * item.quantity).toFixed(2)}
               </span>
               <div style={styles.quantityControls}>
                 <button onClick={() => updateQuantity(item, -1)} style={styles.quantityButton}>
@@ -66,7 +66,7 @@ function CartPage({ cart, updateQuantity, removeFromCart }) {
             </div>
           ))}
           <div style={styles.totalContainer}>
-            <p style={styles.totalText}>Total for selected item: <span style={{color:"#22c55e"}}>${calculateTotal()}</span></p>
+            <p style={styles.totalText}>Total for selected item: <span style={{color:"#22c55e"}}> ₦{calculateTotal()}</span></p>
           </div>
           <button onClick={handleProceedToCheckout} style={styles.checkoutButton}>
             Proceed to Checkout

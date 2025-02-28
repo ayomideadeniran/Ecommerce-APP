@@ -87,13 +87,13 @@ function HomePage({ addToCart, cart }) {
 
                 {/* Product Price */}
                 <div style={styles.productPrice}>
-                  ${product.discount > 0
+                ₦{product.discount > 0
                     ? (product.price * ((100 - product.discount) / 100)).toFixed(2)
                     : product.price.toFixed(2)}
 
                   {/* Original Price (Strikethrough) */}
                   {product.discount > 0 && (
-                    <span style={styles.originalPrice}> ${product.price.toFixed(2)}</span>
+                    <span style={styles.originalPrice}>  ₦{product.price.toFixed(2)}</span>
                   )}
                 </div>
 
@@ -101,7 +101,7 @@ function HomePage({ addToCart, cart }) {
                 <div>
                   {product.installments.map((installment, index)=>(
                       <p key={index}>
-                         {installment.months} Months: ${installment.monthlyPayment.toFixed(2)}
+                         {installment.months} Months:  ₦{installment.monthlyPayment.toFixed(2)}
                       </p>
                   ))}
                 </div>
