@@ -45,8 +45,13 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/send-sms" target="_blank" rel="noopener noreferrer" style={styles.link}>
-              Send SMS
+            <Link to="/https://ecommerce-ussd-api.onrender.com/api/test" target="_blank" rel="noopener noreferrer" style={styles.link}>
+              USSD CODE
+            </Link>
+          </li>
+          <li>
+            <Link to="/https://ecommerce-sms-api.onrender.com" target="_blank" rel="noopener noreferrer" style={styles.link}>
+              SEND SMS
             </Link>
           </li>
         </ul>
