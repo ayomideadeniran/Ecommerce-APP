@@ -1,15 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Navbar = ({ authUser, setAuthUser }) => {
+const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  // Handle Logout
-  const handleLogout = () => {
-    localStorage.removeItem("authUser");
-    setAuthUser(null);
-    setIsMenuOpen(false); // Close the menu after logout
-  };
 
   return (
     <nav style={styles.navbar}>
@@ -31,30 +24,31 @@ const Navbar = ({ authUser, setAuthUser }) => {
               Cart <span style={styles.cartIcon}>🛒</span>
             </Link>
           </li>
-          {authUser ? (
-            <>
-              <li>
-                <Link to="/order-tracking" style={styles.link}>
-                  Order Tracking
-                </Link>
-              </li>
-              <li>
-                <a href="https://ecommerce-sms-api.onrender.com" target="_blank" rel="noopener noreferrer" style={styles.link}>
-                  Send SMS
-                </a>
-              </li>
-              <li>
-                <Link to="/admin-dashboard" style={styles.link}>
-                  Admin Dashboard
-                </Link>
-              </li>
-                <li>
-                <button onClick={handleLogout} style={styles.logoutButton}>
-                    Logout
-                </button>
-                </li>
-            </>
-          ) : null}
+          <li>
+            <Link to="/login" style={styles.link}>
+              Login
+            </Link>
+          </li>
+          <li>
+            <Link to="/signup" style={styles.link}>
+              Sign Up
+            </Link>
+          </li>
+          <li>
+            <Link to="/order-tracking" style={styles.link}>
+              Order Tracking
+            </Link>
+          </li>
+          <li>
+            <Link to="/admin-dashboard" style={styles.link}>
+              Admin Dashboard
+            </Link>
+          </li>
+          <li>
+            <Link to="/send-sms" target="_blank" rel="noopener noreferrer" style={styles.link}>
+              Send SMS
+            </Link>
+          </li>
         </ul>
 
         {/* Hamburger Menu Toggle (Mobile View) */}
@@ -118,32 +112,6 @@ const Navbar = ({ authUser, setAuthUser }) => {
                     Cart <span style={styles.cartIcon}>🛒</span>
                   </Link>
                 </li>
-                {authUser ? (
-                  <>
-                    <li>
-                      <Link to="/order-tracking" style={styles.link} onClick={() => setIsMenuOpen(false)}>
-                        Order Tracking
-                      </Link>
-                    </li>
-                    <li>
-                      <a href="https://ecommerce-sms-api.onrender.com" target="_blank" rel="noopener noreferrer" style={styles.link}>
-                        Send SMS
-                      </a>
-                    </li>
-                    <li>
-                      <Link to="/admin-dashboard" style={styles.link} onClick={() => setIsMenuOpen(false)}>
-                        Admin Dashboard
-                      </Link>
-                    </li>
-                    <li>
-                        <button onClick={handleLogout} style={styles.logoutButton}>
-                            Logout
-                        </button>
-                    </li>
-                  </>
-                ) : (
-                  null
-                )}
               </ul>
             </div>
           </>
@@ -203,32 +171,8 @@ const styles = {
     display: "flex",
     alignItems: "center",
   },
-    cartIcon:{
-        marginLeft:"4px"
-    },
-  connectButton: {
-    backgroundColor: "#16a34a",
-    color: "#fff",
-    border: "none",
-    padding: "8px 16px",
-    borderRadius: "8px",
-    cursor: "pointer",
-    transition: "background-color 0.3s ease",
-    "&:hover": {
-      backgroundColor: "#15803d",
-    },
-  },
-  logoutButton: {
-    backgroundColor: "#ef4444",
-    color: "#fff",
-    border: "none",
-    padding: "8px 16px",
-    borderRadius: "8px",
-    cursor: "pointer",
-    transition: "background-color 0.3s ease",
-    "&:hover": {
-      backgroundColor: "#dc2626",
-    },
+  cartIcon: {
+    marginLeft: "4px",
   },
   hamburgerContainer: {
     display: "none",
@@ -268,15 +212,15 @@ const styles = {
     "@media (max-width: 768px)": {
       right: "0",
     },
-    boxShadow: "-2px 0 5px rgba(0, 0, 0, 0.2)", // Add a subtle shadow
+    boxShadow: "-2px 0 5px rgba(0, 0, 0, 0.2)",
   },
   offcanvasHeader: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: "20px",
-      color:"#22c55e",
-      fontWeight:"bold"
+    color: "#22c55e",
+    fontWeight: "bold",
   },
   offcanvasTitle: {
     color: "#22c55e",
